@@ -212,6 +212,7 @@ function CreateGenericTemplateElement(e, t, s) {
                                         attributes: { name: "button", rmid: s.id, title: s.title, "style-group": "1", actions: "" },
                                         text: s.text,
                                         onclick: async function (n) {
+                                             
                                             return await ActionsExecute(n, e, t, s.actions);
                                         },
                                     }),
@@ -354,16 +355,17 @@ function CreateSingleSelectionListTemplateElement(e, t, s) {
     );
 }
 async function ActionsExecute(e, t, s, n) {
+    
     try {
         if ((Log("Actions Submit", n), n.textback))
             try {
-                await t.command("WebChatService.sendMessage", { parentMessageId: s, message: n.textback });
+                // await t.command("WebChatService.sendMessage", { parentMessageId: s, message: n.textback });
             } catch (e) {
                 console.error("Failed to send message", e);
             }
         if (n.commandName)
             try {
-                await t.command(n.commandName, n.commandOptions || {});
+                // await t.command(n.commandName, n.commandOptions || {});
             } catch (e) {
                 console.error("Failed to execute command " + n.commandName, e);
             }

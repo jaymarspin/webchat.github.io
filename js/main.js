@@ -299,10 +299,14 @@ plugin.subscribe('WebChatService.messageReceived', function (e) {
                 case 
                 `Refrigerator , Dryer , Washer , Garbage Disposer , Range/Oven/Stove , Others , Goback`:
                 e.data.messages[i].text = `dont erase me`
+                
+                
                 //convert to select option tag
+                selectTagParser(messages,e.data.messages[i].index).then(data =>{
                 
-                
-                selectTagParser(messages,e.data.messages[i].index)
+                    selectTagSender(data)
+                     
+                })
               break;
 
     }
@@ -343,7 +347,7 @@ plugin.subscribe('WebChatService.started', function (e) {
 
  
 plugin.subscribe('WebChatService.sendMessage', function (e) {
-    //console.log('Chat sendMessage', e);
+    console.log('Chat sendMessage', e);
   });
 
 
